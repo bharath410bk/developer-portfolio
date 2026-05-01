@@ -1,0 +1,245 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<section id="home" class="container" style="min-height: 100vh; display: flex; flexDirection: column; justify-content: center; align-items: center; text-align: center; padding-top: 6rem;">
+    <div class="animate-fade-in" style="margin-bottom: 2rem;">
+        <div style="width: 150px; height: 150px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); margin: 0 auto;">
+            <div style="width: 100%; height: 100%; border-radius: 50%; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <img src="~/images/developer-profile-photo.png" alt="Bharath Kumar AR S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="animate-fade-in" style="animation-delay: 0.2s;">
+        <span style="color: var(--accent-primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 1rem; display: block; text-transform: uppercase;">Software Developer</span>
+        <h1 style="font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1;">
+            <span class="text-gradient">Bharath Kumar AR S</span>
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 2.5rem auto;">
+            Dedicated and young enthusiast who always loves to work hard as well as smart. Exceptionally passionate about taking part in challenging tasks to improve myself. Eager to contribute my fresh perspective and dedication to every project I touch.
+        </p>
+        <div class="hero-buttons" style="display: flex; gap: 1.5rem; justify-content: center;">
+            <a href="#projects" class="btn-premium">View My Work</a>
+            <a href="#contact" class="btn-outline-premium">Let's Talk</a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="container">
+    <div style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 3rem; font-weight: 800;">My <span class="text-gradient">Specialties</span></h2>
+        <p style="color: var(--text-muted); margin-top: 1rem;">Technologies, skills, and activities that drive me.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Technological Skills -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div class="icon-box">
+                <i data-lucide="code"></i>
+            </div>
+            <h3 style="font-size: 1.5rem;">Technological Skills</h3>
+            <ul style="list-style: none; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> HTML, CSS</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> SQL</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> SDLC</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Python</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Java (Core)</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> ASP.NET Core</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> WordPress</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> MS-Office</li>
+            </ul>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem; animation-delay: 0.1s;">
+            <div class="icon-box">
+                <i data-lucide="layout"></i>
+            </div>
+            <h3 style="font-size: 1.5rem;">Soft Skills</h3>
+            <ul style="list-style: none; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Observation</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Decision Making</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Communication</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Multi-tasking</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Time Management</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Volunteering</li>
+            </ul>
+        </div>
+
+        <!-- Interests -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem; animation-delay: 0.2s;">
+            <div class="icon-box">
+                <i data-lucide="heart"></i>
+            </div>
+            <h3 style="font-size: 1.5rem;">Interests</h3>
+            <ul style="list-style: none; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Singing</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Listening to music</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle" size="14" style="color: var(--accent-secondary);"></i> Chess</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="container">
+    <div style="margin-bottom: 4rem;">
+        <h2 style="font-size: 3rem; font-weight: 800;">Featured <span class="text-gradient">Work</span></h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">A glimpse into the systems I've built.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+        <!-- Project 1 -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem; border-top: 4px solid var(--accent-primary);">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="icon-box" style="width: 40px; height: 40px; background: rgba(32, 178, 170, 0.1);">
+                    <i data-lucide="book-open" size="20"></i>
+                </div>
+                <span style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">PROJECT 01</span>
+            </div>
+            <h3 style="font-size: 1.5rem; line-height: 1.3;">Online Library Management System</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; flex: 1;">The main objective of this system is to simplify and make easier the management of books in a Library.</p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem; border-top: 4px solid var(--accent-primary); animation-delay: 0.1s;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="icon-box" style="width: 40px; height: 40px; background: rgba(32, 178, 170, 0.1);">
+                    <i data-lucide="layout" size="20"></i>
+                </div>
+                <span style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">PROJECT 02</span>
+            </div>
+            <h3 style="font-size: 1.5rem; line-height: 1.3;">Course Explorer System</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; flex: 1;">Guiding students for higher studies who have just completed their class 12.</p>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="glass animate-fade-in" style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem; border-top: 4px solid var(--accent-primary); animation-delay: 0.2s;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="icon-box" style="width: 40px; height: 40px; background: rgba(32, 178, 170, 0.1);">
+                    <i data-lucide="activity" size="20"></i>
+                </div>
+                <span style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">PROJECT 03</span>
+            </div>
+            <h3 style="font-size: 1.5rem; line-height: 1.3;">Diabetic Retinal Disease Prediction</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; flex: 1;">Predicts whether the sample retina is affected by Diabetic Retinopathy or not using advanced models.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+        <div>
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Experience & <span class="text-gradient">Education</span></h2>
+            <div class="glass" style="padding: 2rem;">
+                <!-- Timeline Item -->
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="icon-box" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <div>
+                        <span style="color: var(--accent-secondary); font-weight: 600; font-size: 0.9rem;">Jan 2025 - Present</span>
+                        <h4 style="font-size: 1.3rem; margin: 0.2rem 0;">Syncfusion</h4>
+                        <h5 style="color: var(--text-main); font-size: 1rem; font-weight: 500;">Website Developer</h5>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Working in the website team managing 2 ASP.NET Core projects for user account sites and handling front/back-end for WordPress environments.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="icon-box" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <div>
+                        <span style="color: var(--accent-secondary); font-weight: 600; font-size: 0.9rem;">Oct 2023 - Nov 2023</span>
+                        <h4 style="font-size: 1.3rem; margin: 0.2rem 0;">OctaNet SW Services</h4>
+                        <h5 style="color: var(--text-main); font-size: 1rem; font-weight: 500;">Web Developer Intern</h5>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Online internship program focused on web development.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="icon-box" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span style="color: var(--accent-secondary); font-weight: 600; font-size: 0.9rem;">2020 - 2024 (Graduated Jan 2025)</span>
+                        <h4 style="font-size: 1.3rem; margin: 0.2rem 0;">University College Of Engineering, Anna University</h4>
+                        <h5 style="color: var(--text-main); font-size: 1rem; font-weight: 500;">Bachelor of Computer Science & Engg | CGPA - 8.099</h5>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Tiruchirappalli - 24</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Key <span class="text-gradient">Achievements</span></h2>
+            <div class="glass" style="padding: 2rem;">
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="icon-box" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <div>
+                        <span style="color: var(--accent-secondary); font-weight: 600; font-size: 0.9rem;">2020 - 2024</span>
+                        <h4 style="font-size: 1.3rem; margin: 0.2rem 0;">Class Representative</h4>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Managed class activities and represented students effectively.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="icon-box" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <div>
+                        <span style="color: var(--accent-secondary); font-weight: 600; font-size: 0.9rem;">2020 - 2022</span>
+                        <h4 style="font-size: 1.3rem; margin: 0.2rem 0;">NSS Student Co-ordinator</h4>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Organized and led National Service Scheme activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container" style="text-align: center;">
+    <div class="glass animate-fade-in" style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">Get In <span class="text-gradient">Touch</span></h2>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">
+            I am a good communicator, public speaker, and an excellent team player ready to contribute.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                <div class="icon-box">
+                    <i data-lucide="mail"></i>
+                </div>
+                <a href="mailto:bharathkumarars@gmail.com" style="color: var(--text-main);">bharathkumarars@gmail.com</a>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                <div class="icon-box">
+                    <i data-lucide="phone"></i>
+                </div>
+                <span>+91 9488534631</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <span>7, Teacher's Colony, Ranipet - 632401</span>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="mailto:bharathkumarars@gmail.com" class="btn-premium" style="display: flex; align-items: center; gap: 0.8rem;">
+                <i data-lucide="mail"></i> Hire Me
+            </a>
+            <a href="https://www.linkedin.com/in/bharath-kumar-ar-s-848a44214/" target="_blank" class="glass" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: var(--text-main);">
+                <i data-lucide="linkedin"></i>
+            </a>
+        </div>
+    </div>
+</section>

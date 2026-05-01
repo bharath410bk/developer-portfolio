@@ -1,0 +1,12 @@
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.AssemblyInfoInputs.cache
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.AssemblyInfo.cs
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.csproj.CoreCompileInputs.cache
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.RazorAssemblyInfo.cache
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.RazorAssemblyInfo.cs
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.sourcelink.json
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.dll
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\refint\DeveloperPortfolio.dll
+C:\Users\bhara\.gemini\antigravity\scratch\developer-portfolio\obj\Debug\net9.0\DeveloperPortfolio.pdb
