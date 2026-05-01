@@ -1,13 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Github, Linkedin, ExternalLink, Mail, Code, Terminal, Palette, Database, 
   MapPin, Phone, Briefcase, GraduationCap, Award, Heart, FileCode, CheckCircle,
-  Layout, BookOpen, Activity
+  Layout, BookOpen, Activity, Sun, Moon
 } from 'lucide-react';
 import './index.css';
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="glass" style={{
       position: 'fixed',
@@ -26,18 +28,64 @@ const Navbar = () => {
         BHARATH.DEV
       </div>
       
-      <div style={{ display: 'flex', gap: '2rem' }} className="nav-links">
+      {/* Desktop Navigation */}
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links desktop-nav">
         <a href="#hero">Home</a>
-        <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
+        <button onClick={toggleTheme} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center' }}>
+          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+        <a href="#contact" className="btn-primary" style={{ padding: '0.6rem 1.2rem', textDecoration: 'none' }}>
+          Hire Me
+        </a>
       </div>
 
-      <a href="#contact" className="btn-primary" style={{ padding: '0.6rem 1.2rem', color: 'white', textDecoration: 'none' }}>
-        Hire Me
-      </a>
+      {/* Mobile Nav Toggle */}
+      <div className="mobile-only" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <button onClick={toggleTheme} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center' }}>
+          {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+        </button>
+        <button onClick={() => setIsOpen(!isOpen)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="glass"
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              width: '100%',
+              marginTop: '1rem',
+              padding: '2rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.5rem',
+              alignItems: 'center',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+            }}
+          >
+            <a href="#hero" onClick={() => setIsOpen(false)}>Home</a>
+            <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
+            <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+            <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
+            <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+            <a href="#contact" className="btn-primary" onClick={() => setIsOpen(false)} style={{ textDecoration: 'none', width: '100%', textAlign: 'center' }}>
+              Hire Me
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
@@ -67,7 +115,6 @@ const Hero = () => {
           background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
           margin: '0 auto'
         }}>
-          { /* Ensure user adds their own image, using a nice fallback placeholder aesthetic */ }
           <div style={{
             width: '100%',
             height: '100%',
@@ -79,9 +126,9 @@ const Hero = () => {
             overflow: 'hidden'
           }}>
             <img 
-              src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?auto=format&fit=crop&q=80&w=400" 
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=400" 
               alt="Bharath Kumar AR S"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
             />
           </div>
         </div>
@@ -111,18 +158,9 @@ const Hero = () => {
         }}>
           Dedicated and young enthusiast who always loves to work hard as well as smart. Exceptionally passionate about taking part in challenging tasks to improve myself. Eager to contribute my fresh perspective and dedication to every project I touch.
         </p>
-        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="#projects" className="btn-primary" style={{ textDecoration: 'none', color: 'white' }}>View My Work</a>
-          <a href="#contact" style={{ 
-            background: 'transparent', 
-            border: '1px solid var(--glass-border)',
-            padding: '0.8rem 1.5rem',
-            borderRadius: '8px',
-            color: 'white',
-            fontWeight: 600,
-            cursor: 'pointer',
-            textDecoration: 'none'
-          }}>Let's Talk</a>
+        <div className="hero-buttons" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+          <a href="#projects" className="btn-primary" style={{ textDecoration: 'none' }}>View My Work</a>
+          <a href="#contact" className="btn-outline" style={{ textDecoration: 'none' }}>Let's Talk</a>
         </div>
       </motion.div>
     </section>
@@ -135,13 +173,7 @@ const SkillCard = ({ icon: Icon, title, items }) => (
     className="glass" 
     style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}
   >
-    <div style={{ 
-      width: '50px', height: '50px', 
-      borderRadius: '12px', 
-      background: 'rgba(139, 92, 246, 0.1)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      color: 'var(--accent-primary)'
-    }}>
+    <div className="icon-box">
       <Icon size={24} />
     </div>
     <h3 style={{ fontSize: '1.5rem' }}>{title}</h3>
@@ -159,7 +191,7 @@ const Skills = () => {
   const categories = [
     { 
       icon: Code, title: 'Technological Skills', 
-      items: ['HTML, CSS', 'SQL', 'SDLC', 'Python', 'Java (Core)', 'MS-Office'] 
+      items: ['HTML, CSS', 'SQL', 'SDLC', 'Python', 'Java (Core)', 'ASP.NET Core', 'WordPress', 'MS-Office'] 
     },
     { 
       icon: Layout, title: 'Soft Skills', 
@@ -197,10 +229,11 @@ const ProjectCard = ({ title, category, desc, icon: Icon }) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
       <div style={{ 
         width: '40px', height: '40px', 
-        background: 'rgba(236, 72, 153, 0.1)', 
+        background: 'rgba(32, 178, 170, 0.1)', 
         borderRadius: '8px', 
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: 'var(--accent-secondary)'
+        color: 'var(--accent-secondary)',
+        flexShrink: 0
       }}>
         <Icon size={20} />
       </div>
@@ -248,7 +281,7 @@ const Projects = () => {
       </div>
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
         gap: '2.5rem' 
       }}>
         {projectData.map((p, i) => <ProjectCard key={i} {...p} />)}
@@ -259,15 +292,7 @@ const Projects = () => {
 
 const TimelineItem = ({ year, title, subtitle, desc, icon: Icon }) => (
   <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem' }}>
-    <div style={{ 
-      width: '50px', height: '50px', 
-      borderRadius: '50%', 
-      background: 'var(--bg-card)', 
-      border: '1px solid var(--glass-border)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      color: 'var(--accent-primary)',
-      flexShrink: 0
-    }}>
+    <div className="icon-box" style={{ background: 'var(--bg-card)', border: '1px solid var(--glass-border)' }}>
       <Icon size={24} />
     </div>
     <div>
@@ -284,12 +309,19 @@ const ExperienceAndEducation = () => {
     <section id="experience" className="container">
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
         gap: '4rem' 
       }}>
         <div>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem' }}>Education & <span className="text-gradient">Internship</span></h2>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem' }}>Experience & <span className="text-gradient">Education</span></h2>
           <div className="glass" style={{ padding: '2rem' }}>
+            <TimelineItem 
+              year="Jan 2025 - Present"
+              title="Syncfusion"
+              subtitle="Website Developer"
+              desc="Working in the website team managing 2 ASP.NET Core projects for user account sites and handling front/back-end for WordPress environments."
+              icon={Briefcase}
+            />
             <TimelineItem 
               year="Oct 2023 - Nov 2023"
               title="OctaNet SW Services"
@@ -298,9 +330,9 @@ const ExperienceAndEducation = () => {
               icon={Briefcase}
             />
             <TimelineItem 
-              year="2020 - 2024"
+              year="2020 - 2024 (Graduated Jan 2025)"
               title="University College Of Engineering, Anna University"
-              subtitle="Bachelor of Computer Science & Engg | CGPA - 8.09"
+              subtitle="Bachelor of Computer Science & Engg | CGPA - 8.099"
               desc="Tiruchirappalli - 24"
               icon={GraduationCap}
             />
@@ -358,7 +390,7 @@ const ExperienceAndEducation = () => {
 const Contact = () => {
   return (
     <section id="contact" className="container" style={{ textAlign: 'center' }}>
-      <div className="glass" style={{ padding: '4rem', maxWidth: '800px', margin: '0 auto' }}>
+      <div className="glass" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>Get In <span className="text-gradient">Touch</span></h2>
         <p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>
           I am a good communicator, public speaker, and an excellent team player ready to contribute.
@@ -366,21 +398,21 @@ const Contact = () => {
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+            <div className="icon-box">
               <Mail size={24} />
             </div>
-            <a href="mailto:bharathkumarars@gmail.com" style={{ color: 'var(--text-main)' }}>bharathkumarars@gmail.com</a>
+            <a href="mailto:bharathkumarars@gmail.com" style={{ color: 'var(--text-main)', wordBreak: 'break-all' }}>bharathkumarars@gmail.com</a>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+            <div className="icon-box">
               <Phone size={24} />
             </div>
             <span>+91 9488534631</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+            <div className="icon-box">
               <MapPin size={24} />
             </div>
             <span>7, Teacher's Colony,<br/>Ranipet - 632401</span>
@@ -388,7 +420,7 @@ const Contact = () => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-          <a href="mailto:bharathkumarars@gmail.com" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none' }}>
+          <a href="mailto:bharathkumarars@gmail.com" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none' }}>
             <Mail size={20} /> Hire Me
           </a>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -403,9 +435,19 @@ const Contact = () => {
 };
 
 const App = () => {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <div style={{ paddingTop: '1rem' }}>
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <Skills />
       <ExperienceAndEducation />
