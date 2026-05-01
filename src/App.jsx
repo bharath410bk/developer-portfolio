@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Github, Linkedin, ExternalLink, Mail, Code, Terminal, Palette, Database } from 'lucide-react';
+import { 
+  Menu, X, Github, Linkedin, ExternalLink, Mail, Code, Terminal, Palette, Database, 
+  MapPin, Phone, Briefcase, GraduationCap, Award, Heart, FileCode, CheckCircle,
+  Layout, BookOpen, Activity
+} from 'lucide-react';
 import './index.css';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
   return (
     <nav className="glass" style={{
       position: 'fixed',
@@ -21,7 +23,7 @@ const Navbar = () => {
       alignItems: 'center'
     }}>
       <div className="text-gradient" style={{ fontWeight: 800, fontSize: '1.5rem', cursor: 'pointer' }}>
-        DEV.IO
+        BHARATH.DEV
       </div>
       
       <div style={{ display: 'flex', gap: '2rem' }} className="nav-links">
@@ -29,12 +31,13 @@ const Navbar = () => {
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </div>
 
-      <button className="btn-primary" style={{ padding: '0.6rem 1.2rem' }}>
-        Resume
-      </button>
+      <a href="#contact" className="btn-primary" style={{ padding: '0.6rem 1.2rem', color: 'white', textDecoration: 'none' }}>
+        Hire Me
+      </a>
     </nav>
   );
 };
@@ -47,49 +50,86 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      textAlign: 'center'
+      textAlign: 'center',
+      paddingTop: '6rem'
     }}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{ marginBottom: '2rem' }}
+      >
+        <div style={{
+          width: '150px',
+          height: '150px',
+          borderRadius: '50%',
+          padding: '4px',
+          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+          margin: '0 auto'
+        }}>
+          { /* Ensure user adds their own image, using a nice fallback placeholder aesthetic */ }
+          <div style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%',
+            background: 'var(--bg-dark)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden'
+          }}>
+            <img 
+              src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?auto=format&fit=crop&q=80&w=400" 
+              alt="Bharath Kumar AR S"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
+            />
+          </div>
+        </div>
+      </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
         <span style={{ 
           color: 'var(--accent-primary)', 
           fontWeight: 600, 
           letterSpacing: '2px',
           marginBottom: '1rem',
-          display: 'block'
-        }}>WELCOME TO MY WORLD</span>
+          display: 'block',
+          textTransform: 'uppercase'
+        }}>Software Developer</span>
         <h1 style={{ fontSize: '4.5rem', fontWeight: 900, marginBottom: '1.5rem', lineHeight: 1.1 }}>
-          Building Digital <span className="text-gradient">Masterpieces</span>
+          <span className="text-gradient">Bharath Kumar AR S</span>
         </h1>
         <p style={{ 
           fontSize: '1.2rem', 
           color: 'var(--text-muted)', 
-          maxWidth: '700px',
-          marginBottom: '2.5rem'
+          maxWidth: '800px',
+          marginBottom: '2.5rem',
+          margin: '0 auto 2.5rem auto'
         }}>
-          A full-stack developer specialized in crafting premium web experiences with a focus on high-end aesthetics and performance.
+          Dedicated and young enthusiast who always loves to work hard as well as smart. Exceptionally passionate about taking part in challenging tasks to improve myself. Eager to contribute my fresh perspective and dedication to every project I touch.
         </p>
-        <div style={{ display: 'flex', gap: '1.5rem' }}>
-          <button className="btn-primary">View My Work</button>
-          <button style={{ 
+        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+          <a href="#projects" className="btn-primary" style={{ textDecoration: 'none', color: 'white' }}>View My Work</a>
+          <a href="#contact" style={{ 
             background: 'transparent', 
             border: '1px solid var(--glass-border)',
             padding: '0.8rem 1.5rem',
             borderRadius: '8px',
             color: 'white',
             fontWeight: 600,
-            cursor: 'pointer'
-          }}>Let's Talk</button>
+            cursor: 'pointer',
+            textDecoration: 'none'
+          }}>Let's Talk</a>
         </div>
       </motion.div>
     </section>
   );
 };
 
-const SkillCard = ({ icon: Icon, title, desc }) => (
+const SkillCard = ({ icon: Icon, title, items }) => (
   <motion.div 
     whileHover={{ y: -10 }}
     className="glass" 
@@ -105,79 +145,211 @@ const SkillCard = ({ icon: Icon, title, desc }) => (
       <Icon size={24} />
     </div>
     <h3 style={{ fontSize: '1.5rem' }}>{title}</h3>
-    <p style={{ color: 'var(--text-muted)' }}>{desc}</p>
+    <ul style={{ listStyle: 'none', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      {items.map((item, idx) => (
+        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <CheckCircle size={14} style={{ color: 'var(--accent-secondary)' }} /> {item}
+        </li>
+      ))}
+    </ul>
   </motion.div>
 );
 
 const Skills = () => {
-  const skills = [
-    { icon: Code, title: 'Frontend', desc: 'React, Next.js, Framer Motion, GSAP' },
-    { icon: Database, title: 'Backend', desc: 'Node.js, PostgreSQL, MongoDB, Redis' },
-    { icon: Terminal, title: 'DevOps', desc: 'Docker, AWS, CI/CD, Nginx' },
-    { icon: Palette, title: 'Design', desc: 'Figma, UI/UX, Design Systems' },
+  const categories = [
+    { 
+      icon: Code, title: 'Technological Skills', 
+      items: ['HTML, CSS', 'SQL', 'SDLC', 'Python', 'Java (Core)', 'MS-Office'] 
+    },
+    { 
+      icon: Layout, title: 'Soft Skills', 
+      items: ['Observation', 'Decision Making', 'Communication', 'Multi-tasking', 'Time Management', 'Volunteering'] 
+    },
+    {
+      icon: Heart, title: 'Interests',
+      items: ['Singing', 'Listening to music', 'Chess']
+    }
   ];
 
   return (
     <section id="skills" className="container">
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '3rem', fontWeight: 800 }}>Core <span className="text-gradient">Specialties</span></h2>
+        <h2 style={{ fontSize: '3rem', fontWeight: 800 }}>My <span className="text-gradient">Specialties</span></h2>
+        <p style={{ color: 'var(--text-muted)', marginTop: '1rem' }}>Technologies, skills, and activities that drive me.</p>
       </div>
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
         gap: '2rem' 
       }}>
-        {skills.map((s, i) => <SkillCard key={i} {...s} />)}
+        {categories.map((c, i) => <SkillCard key={i} {...c} />)}
       </div>
     </section>
   );
 };
 
-const ProjectCard = ({ title, category, img }) => (
+const ProjectCard = ({ title, category, desc, icon: Icon }) => (
   <motion.div 
     whileHover={{ scale: 1.02 }}
     className="glass" 
-    style={{ overflow: 'hidden', cursor: 'pointer' }}
+    style={{ overflow: 'hidden', cursor: 'pointer', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', borderTop: '4px solid var(--accent-primary)' }}
   >
-    <div style={{ 
-      height: '300px', 
-      background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${img})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      padding: '2rem'
-    }}>
-      <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>{category}</span>
-      <h3 style={{ fontSize: '1.8rem', margin: '0.5rem 0' }}>{title}</h3>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
-          Live Demo <ExternalLink size={16} />
-        </a>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div style={{ 
+        width: '40px', height: '40px', 
+        background: 'rgba(236, 72, 153, 0.1)', 
+        borderRadius: '8px', 
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: 'var(--accent-secondary)'
+      }}>
+        <Icon size={20} />
       </div>
+      <span style={{ color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.9rem', letterSpacing: '1px' }}>{category}</span>
+    </div>
+    <h3 style={{ fontSize: '1.5rem', lineHeight: 1.3 }}>{title}</h3>
+    <p style={{ color: 'var(--text-muted)', fontSize: '1rem', flex: 1 }}>{desc}</p>
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: '1rem' }}>
+      <span style={{ color: 'var(--accent-primary)', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        View Details <ExternalLink size={16} />
+      </span>
     </div>
   </motion.div>
 );
 
 const Projects = () => {
+  const projectData = [
+    {
+      title: "Online Library Management System",
+      category: "PROJECT 01",
+      desc: "The main objective of this system is to simplify and make easier the management of books in a Library.",
+      icon: BookOpen
+    },
+    {
+      title: "Course Explorer System",
+      category: "PROJECT 02",
+      desc: "Guiding students for higher studies who have just completed their class 12.",
+      icon: Layout
+    },
+    {
+      title: "Diabetic Retinal Disease Prediction",
+      category: "PROJECT 03",
+      desc: "Predicts whether the sample retina is affected by Diabetic Retinopathy or not using advanced models.",
+      icon: Activity
+    }
+  ];
+
   return (
     <section id="projects" className="container">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>
         <div>
           <h2 style={{ fontSize: '3rem', fontWeight: 800 }}>Featured <span className="text-gradient">Work</span></h2>
-          <p style={{ color: 'var(--text-muted)' }}>A glimpse into my creative laboratory.</p>
+          <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>A glimpse into the systems I've built.</p>
         </div>
-        <button style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>View All Projects →</button>
       </div>
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
         gap: '2.5rem' 
       }}>
-        <ProjectCard title="Luxe Estates" category="REAL ESTATE APP" img="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3" />
-        <ProjectCard title="Crypto Pulse" category="FINTECH DASHBOARD" img="https://images.unsplash.com/photo-1551288049-bbbda536ad37?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3" />
-        <ProjectCard title="Aether UI" category="DESIGN SYSTEM" img="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3" />
+        {projectData.map((p, i) => <ProjectCard key={i} {...p} />)}
+      </div>
+    </section>
+  );
+};
+
+const TimelineItem = ({ year, title, subtitle, desc, icon: Icon }) => (
+  <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem' }}>
+    <div style={{ 
+      width: '50px', height: '50px', 
+      borderRadius: '50%', 
+      background: 'var(--bg-card)', 
+      border: '1px solid var(--glass-border)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      color: 'var(--accent-primary)',
+      flexShrink: 0
+    }}>
+      <Icon size={24} />
+    </div>
+    <div>
+      <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.9rem' }}>{year}</span>
+      <h4 style={{ fontSize: '1.3rem', margin: '0.2rem 0' }}>{title}</h4>
+      {subtitle && <h5 style={{ color: 'var(--text-main)', fontSize: '1rem', fontWeight: 500 }}>{subtitle}</h5>}
+      <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>{desc}</p>
+    </div>
+  </div>
+);
+
+const ExperienceAndEducation = () => {
+  return (
+    <section id="experience" className="container">
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+        gap: '4rem' 
+      }}>
+        <div>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem' }}>Education & <span className="text-gradient">Internship</span></h2>
+          <div className="glass" style={{ padding: '2rem' }}>
+            <TimelineItem 
+              year="Oct 2023 - Nov 2023"
+              title="OctaNet SW Services"
+              subtitle="Web Developer Intern"
+              desc="Online internship program focused on web development."
+              icon={Briefcase}
+            />
+            <TimelineItem 
+              year="2020 - 2024"
+              title="University College Of Engineering, Anna University"
+              subtitle="Bachelor of Computer Science & Engg | CGPA - 8.09"
+              desc="Tiruchirappalli - 24"
+              icon={GraduationCap}
+            />
+            <TimelineItem 
+              year="2018 - 2020"
+              title="DAV BHEL School Ranipet"
+              subtitle="AISSCE - 75% | CBSE"
+              desc="Completed Senior Secondary Education."
+              icon={GraduationCap}
+            />
+            <TimelineItem 
+              year="Completed 2018"
+              title="Our Lady's Matriculation School"
+              subtitle="SSLC - 89% | Tamil Nadu State Board"
+              desc="Completed Secondary Education."
+              icon={GraduationCap}
+            />
+          </div>
+        </div>
+
+        <div>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2rem' }}>Key <span className="text-gradient">Achievements</span></h2>
+          <div className="glass" style={{ padding: '2rem' }}>
+            <TimelineItem 
+              year="2020 - 2024"
+              title="Class Representative"
+              desc="Managed class activities and represented students effectively."
+              icon={Award}
+            />
+            <TimelineItem 
+              year="2020 - 2022"
+              title="NSS Student Co-ordinator"
+              desc="Organized and led National Service Scheme activities."
+              icon={Award}
+            />
+            <TimelineItem 
+              year="2023 - 2024"
+              title="Treasurer"
+              desc="Ranipet Trainers Alliance Club."
+              icon={Award}
+            />
+            <TimelineItem 
+              year="2021 - 2023"
+              title="Member"
+              desc="Ranipet Liberty Lions Club."
+              icon={Award}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -187,17 +359,42 @@ const Contact = () => {
   return (
     <section id="contact" className="container" style={{ textAlign: 'center' }}>
       <div className="glass" style={{ padding: '4rem', maxWidth: '800px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>Let's <span className="text-gradient">Collaborate</span></h2>
+        <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem' }}>Get In <span className="text-gradient">Touch</span></h2>
         <p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>
-          Have a project in mind or just want to say hi? My inbox is always open.
+          I am a good communicator, public speaker, and an excellent team player ready to contribute.
         </p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+              <Mail size={24} />
+            </div>
+            <a href="mailto:bharathkumarars@gmail.com" style={{ color: 'var(--text-main)' }}>bharathkumarars@gmail.com</a>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+              <Phone size={24} />
+            </div>
+            <span>+91 9488534631</span>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+              <MapPin size={24} />
+            </div>
+            <span>7, Teacher's Colony,<br/>Ranipet - 632401</span>
+          </div>
+        </div>
+
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-          <a href="mailto:hello@example.com" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <Mail size={20} /> Send an Email
+          <a href="mailto:bharathkumarars@gmail.com" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', textDecoration: 'none' }}>
+            <Mail size={20} /> Hire Me
           </a>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <motion.a whileHover={{ scale: 1.2 }} href="#"><Github /></motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#"><Linkedin /></motion.a>
+            <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/bharath-kumar-ar-s-848a44214/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-main)' }}>
+              <Linkedin size={28} />
+            </motion.a>
           </div>
         </div>
       </div>
@@ -207,14 +404,15 @@ const Contact = () => {
 
 const App = () => {
   return (
-    <div style={{ paddingTop: '5rem' }}>
+    <div style={{ paddingTop: '1rem' }}>
       <Navbar />
       <Hero />
       <Skills />
+      <ExperienceAndEducation />
       <Projects />
       <Contact />
       <footer style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--text-muted)', borderTop: '1px solid var(--glass-border)' }}>
-        <p>© 2026 Bharat. Built with React & Passion.</p>
+        <p>© 2026 Bharath Kumar AR S. Built with React & Passion.</p>
       </footer>
     </div>
   );
