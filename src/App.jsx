@@ -6,6 +6,7 @@ import {
   Layout, BookOpen, Activity, Sun, Moon
 } from 'lucide-react';
 import './index.css';
+import profilePic from './assets/developer-profile-photo.png';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,9 +127,9 @@ const Hero = () => {
             overflow: 'hidden'
           }}>
             <img 
-              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=400" 
+              src={profilePic} 
               alt="Bharath Kumar AR S"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', opacity: 1 }}
             />
           </div>
         </div>
